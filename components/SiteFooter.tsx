@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/lib/site";
 
@@ -7,10 +8,14 @@ export default function SiteFooter() {
       <div className="container py-[clamp(48px,7vw,80px)]">
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
           <div>
-            <p className="font-caslon text-xl font-bold text-ink">
-              {site.legalName}
-            </p>
-            <address className="mt-3 not-italic text-ink-soft">
+            <Image
+              src="/logo.png"
+              alt="Atlas Equity Group"
+              width={573}
+              height={435}
+              className="h-20 w-auto"
+            />
+            <address className="mt-5 not-italic text-ink-soft">
               <p className="record text-sm">{site.address}</p>
               <p className="record mt-1 text-sm">
                 <a href={site.phoneHref} className="hover:text-ink">

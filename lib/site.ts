@@ -6,14 +6,18 @@
 export const site = {
   name: "Atlas Equity Group",
   legalName: "Atlas Equity Group LLC",
-  // Placeholders — replace with real values before launch.
-  phone: "(555) 000-0000",
-  phoneHref: "tel:+15550000000",
-  email: "offers@atlasequitygroup.com",
+  phone: "(509) 679-4810",
+  phoneHref: "tel:+15096794810",
+  // Public contact address, and the default destination for form leads
+  // (see app/api/contact/route.ts).
+  email: "agreements@atlaseqg.com",
   hours: "9am–6pm ET",
+  // TODO: still a placeholder — this string renders verbatim in the footer
+  // and on /get-offer, so it must be replaced before launch.
   address: "[Registered address once provided]",
   // State of LLC registration, used in the trust-bar verification line.
-  registrationState: "Delaware",
-  // Absolute base for metadata / OG. Replace with the production domain.
-  url: "https://www.atlasequitygroup.com",
+  registrationState: "Arizona",
+  // Absolute base for metadata / OG. Lower-cased: it is emitted into
+  // canonical and og:url tags, where mixed case reads as sloppy.
+  url: "https://atlaseqg.com",
 } as const;

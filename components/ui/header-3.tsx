@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { createPortal } from "react-dom";
@@ -99,12 +100,22 @@ export function Header() {
           <Link
             href="/"
             onClick={() => setOpen(false)}
-            className={cn(
-              "font-caslon text-[1.111rem] font-bold leading-none tracking-[-0.01em] whitespace-nowrap",
-              overlay ? "text-paper" : "text-ink"
-            )}
+            className="flex shrink-0 items-center"
+            aria-label="Atlas Equity Group — home"
           >
-            Atlas Equity Group
+            <Image
+              src="/logo.png"
+              alt="Atlas Equity Group"
+              width={573}
+              height={435}
+              priority
+              className={cn(
+                "h-14 w-auto transition-[filter] duration-200",
+                // The mark is navy + brass, which disappears against the dark
+                // hero. Over it, render a reversed (solid white) logo instead.
+                overlay && "brightness-0 invert"
+              )}
+            />
           </Link>
 
           <NavigationMenu className="hidden lg:flex">

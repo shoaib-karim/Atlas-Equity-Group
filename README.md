@@ -17,14 +17,18 @@ Open http://localhost:3000.
 
 Copy `.env.example` to `.env.local` and fill in:
 
-| Variable | Purpose |
-|---|---|
-| `RESEND_API_KEY` | Resend API key for lead delivery |
-| `LEAD_NOTIFICATION_TO` | Address that receives new leads |
-| `LEAD_NOTIFICATION_FROM` | Verified sender on your Resend domain |
+| Variable | Required | Purpose |
+|---|---|---|
+| `RESEND_API_KEY` | yes | Resend API key for lead delivery |
+| `LEAD_NOTIFICATION_FROM` | yes | Sender on a domain verified in Resend |
+| `LEAD_NOTIFICATION_TO` | no | Overrides the lead destination. Defaults to `site.email` in `lib/site.ts` |
 
-Without these the offer form still validates and returns success, but the lead is
-only logged to the server console — nothing is emailed. See `app/api/contact/route.ts`.
+Form leads go to `site.email` (`agreements@atlaseqg.com`) unless
+`LEAD_NOTIFICATION_TO` overrides it.
+
+Without `RESEND_API_KEY` and `LEAD_NOTIFICATION_FROM` the offer form still
+validates and returns success, but the lead is only logged to the server
+console — **nothing is emailed**. See `app/api/contact/route.ts`.
 
 ## Structure
 

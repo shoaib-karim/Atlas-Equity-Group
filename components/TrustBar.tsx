@@ -9,8 +9,8 @@ import { site } from "@/lib/site";
  */
 export default function TrustBar() {
   return (
-    <ul className="grid grid-cols-1 gap-x-8 gap-y-5 sm:grid-cols-2 lg:grid-cols-4">
-      <li className="flex items-start gap-3 lg:border-l lg:border-[rgb(251_250_247/0.18)] lg:pl-6 lg:first:border-l-0 lg:first:pl-0">
+    <ul className="grid grid-cols-1 gap-x-8 gap-y-5 sm:grid-cols-2 lg:grid-cols-3">
+      {/* <li className="flex items-start gap-3 lg:border-l lg:border-[rgb(251_250_247/0.18)] lg:pl-6 lg:first:border-l-0 lg:first:pl-0">
         <ShieldCheck
           size={20}
           strokeWidth={1.5}
@@ -31,7 +31,7 @@ export default function TrustBar() {
             of State
           </a>
         </span>
-      </li>
+      </li> */}
 
       {[
         {
@@ -49,7 +49,7 @@ export default function TrustBar() {
       ].map(({ icon: Icon, text }) => (
         <li
           key={text}
-          className="flex items-start gap-3 lg:border-l lg:border-[rgb(251_250_247/0.18)] lg:pl-6"
+          className="flex items-start gap-3 lg:border-l lg:border-[rgb(251_250_247/0.18)] lg:pl-6 lg:first:border-l-0 lg:first:pl-0"
         >
           <Icon
             size={20}

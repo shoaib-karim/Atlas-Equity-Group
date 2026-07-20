@@ -54,11 +54,13 @@ export async function POST(request: Request) {
     </table>`;
 
   const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.LEAD_NOTIFICATION_TO;
+  // Leads land in the public contact inbox (lib/site.ts) unless an env var
+  // overrides it — e.g. to route staging traffic somewhere else.
+  const to = process.env.LEAD_NOTIFICATION_TO || site.email;
   const from = process.env.LEAD_NOTIFICATION_FROM;
 
   // Pre-launch fallback: if email isn't configured yet, log and succeed so the
-  // form is testable. Configure RESEND_API_KEY + addresses before go-live.
+  // form is testable. Configure RESEND_API_KEY + sender before go-live.
   if (!apiKey || !to || !from) {
     console.warn(
       "[contact] Email not configured; lead not delivered. Payload:",
