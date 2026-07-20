@@ -444,13 +444,21 @@ p {
    rather than a stray label in a margin. */
 .section-index {
   font-family: var(--font-plex-mono), ui-monospace, monospace;
-  font-size: var(--text-sm);
+  /* 16px at both ends: 1rem against the 16px mobile root, and --text-sm
+     (0.889rem) against the 18px desktop root both resolve to 16px. Kept in
+     rem rather than px so browser text scaling still applies. */
+  font-size: 1rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--ink-soft);
   display: inline-flex;
   align-items: center;
   gap: 14px;
+}
+@media (min-width: 768px) {
+  .section-index {
+    font-size: var(--text-sm);
+  }
 }
 .section-index::after {
   content: "";
