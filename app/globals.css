@@ -506,18 +506,33 @@ p {
   overflow: hidden;
 }
 
-/* 16:9 iframe scaled to cover the hero box in both axes */
+/* 16:9 iframe scaled to cover the hero box in both axes.
+   Width-driven on wide screens, height-driven on tall/portrait ones.
+
+   Both min-* values MUST be expressed in the same unit as each other, or the
+   two constraints disagree and the iframe is stretched off 16:9 — which is
+   what a previous `min-height: 100%` + `min-width: …vh` pairing did on
+   phones, where the percentage resolved against an svh-sized hero while the
+   width resolved against the taller, URL-bar-inclusive vh. */
 .hero-video iframe {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 100vw;
-  height: 56.25vw; /* 100 / (16/9) */
-  min-height: 100%;
-  min-width: 177.78vh; /* 100 * (16/9) */
   transform: translate(-50%, -50%);
   border: 0;
   pointer-events: none;
+
+  width: 100vw;
+  height: 56.25vw; /* 100vw x 9/16 */
+
+  /* Fallback for browsers without svh */
+  min-width: 177.78vh; /* 100vh x 16/9 */
+  min-height: 100vh;
+
+  /* svh matches the hero's own min-height, so the video tracks the section
+     exactly on mobile instead of overshooting with vh. */
+  min-width: 177.78svh;
+  min-height: 100svh;
 }
 
 /* Scrim guarantees text contrast over unknown video luminance */

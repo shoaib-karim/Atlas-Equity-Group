@@ -12,9 +12,11 @@ export const site = {
   // (see app/api/contact/route.ts).
   email: "agreements@atlaseqg.com",
   hours: "9am–6pm ET",
-  // TODO: still a placeholder — this string renders verbatim in the footer
-  // and on /get-offer, so it must be replaced before launch.
-  address: "[Registered address once provided]",
+  // Empty until the registered address is available. The footer and the
+  // /get-offer "Mail" block are gated on this, so they stay hidden rather
+  // than printing a placeholder — fill it in and both appear automatically.
+  // Typed as `string` so those checks stay meaningful to TypeScript.
+  address: "" as string,
   // State of LLC registration, used in the trust-bar verification line.
   registrationState: "Arizona",
   // Absolute base for metadata / OG. Lower-cased: it is emitted into

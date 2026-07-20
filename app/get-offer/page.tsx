@@ -167,16 +167,20 @@ export default function GetOfferPage() {
               Weekdays {site.hours}
             </p>
           </div>
-          <div>
-            <p className="section-index">
-              <span>Mail</span>
-            </p>
-            <p className="mt-4 record text-base text-ink-soft">
-              {site.legalName}
-              <br />
-              {site.address}
-            </p>
-          </div>
+          {/* Hidden until a registered address exists — a "Mail" heading with
+              no address is worse than no block at all. */}
+          {site.address ? (
+            <div>
+              <p className="section-index">
+                <span>Mail</span>
+              </p>
+              <p className="mt-4 record text-base text-ink-soft">
+                {site.legalName}
+                <br />
+                {site.address}
+              </p>
+            </div>
+          ) : null}
         </Reveal>
       </Section>
     </>

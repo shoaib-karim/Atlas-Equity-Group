@@ -16,7 +16,9 @@ export default function SiteFooter() {
               className="h-20 w-auto"
             />
             <address className="mt-5 not-italic text-ink-soft">
-              <p className="record text-sm">{site.address}</p>
+              {site.address ? (
+                <p className="record text-sm">{site.address}</p>
+              ) : null}
               <p className="record mt-1 text-sm">
                 <a href={site.phoneHref} className="hover:text-ink">
                   {site.phone}
